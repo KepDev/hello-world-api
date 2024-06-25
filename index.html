@@ -2,8 +2,31 @@
 <html>
 <head>
     <title>Hello World API</title>
+    <script>
+        function checkCredentials() {
+            var params = new URLSearchParams(window.location.search);
+            var clientId = params.get('client_id');
+            var clientSecret = params.get('client_secret');
+            
+            // Replace these values with your actual client ID and client secret
+            var validClientId = "your_client_id";
+            var validClientSecret = "your_client_secret";
+            
+            // Check if provided credentials match the expected values
+            if (clientId === validClientId && clientSecret === validClientSecret) {
+                // Credentials are valid, show the message
+                document.getElementById('message').innerText = 'Hello, world!';
+            } else {
+                // Credentials are not valid, show an error message or do nothing
+                document.getElementById('message').innerText = 'Unauthorized access!';
+            }
+        }
+        
+        // Run the function on page load
+        window.onload = checkCredentials;
+    </script>
 </head>
 <body>
-    <p>Hello, world!</p>
+    <p id="message">Loading...</p>
 </body>
 </html>
